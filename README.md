@@ -2,7 +2,7 @@
 
 메이플스토리 미니게임 **한글 모아모아**의 게임판과 보유 조각을 입력하면, 학습한 가치함수와 탐색으로 **다음 배치 또는 특수능력 사용**을 추천하는 독립 웹 도구입니다.
 
-**[모파고 사용하기](https://cbh456746.github.io/mopago/)** · [프로젝트 소개](https://cbh456746.github.io/play/mopago/) · [공식 게임 안내](https://maplestory.nexon.com/News/Event/Ongoing/1393)
+**[모파고 사용하기](https://cbh456746.github.io/mopago/)** · [프로젝트 소개](https://cbh456746.github.io/projects/mopago/) · [공식 게임 안내](https://maplestory.nexon.com/News/Event/Ongoing/1393)
 
 설치나 로그인 없이 브라우저에서 사용합니다. 게임 화면을 자동으로 읽거나 게임 클라이언트를 조작하지 않습니다. 공개 화면에는 게임판·보유 조각·보유 능력·진행 상황·다음 수만 표시합니다.
 
