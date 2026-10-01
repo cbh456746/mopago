@@ -1,0 +1,19 @@
+{
+  "name": "mopago",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "한글 모아모아의 수동 보드 입력과 강화학습 기반 행동 추천",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "train": "node scripts/train-policy.mjs",
+    "tune": "node scripts/tune-spatial.mjs",
+    "evaluate": "node scripts/evaluate-policy.mjs",
+    "finalize": "node scripts/finalize-policy.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

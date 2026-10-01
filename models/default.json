@@ -1,0 +1,196 @@
+{
+  "format": "mopago-expert-policy-v5",
+  "signature": "{\"rules\":\"mopago-rules-v1\",\"shapes\":[{\"name\":\"ㅏ\",\"columns\":[\"123\",\"2\"]},{\"name\":\"ㅑ\",\"columns\":[\"12345\",\"24\"]},{\"name\":\".\",\"columns\":[\"1\"]},{\"name\":\"ㅍ\",\"columns\":[\"13\",\"123\",\"123\",\"13\"]},{\"name\":\"ㄱ\",\"columns\":[\"1\",\"123\"]},{\"name\":\"ㅌ\",\"columns\":[\"12345\",\"135\"]},{\"name\":\"ㅣ\",\"columns\":[\"12345\"]},{\"name\":\"ㄷ\",\"columns\":[\"123\",\"13\"]},{\"name\":\"ㅁ\",\"columns\":[\"123\",\"13\",\"123\"]},{\"name\":\"ㅡ\",\"columns\":[\"1\",\"1\",\"1\"]},{\"name\":\"ㅊ\",\"columns\":[\"24\",\"123\",\"24\"]},{\"name\":\"ㄹ\",\"columns\":[\"1345\",\"1235\"]},{\"name\":\"ㅎ\",\"columns\":[\"2\",\"23\",\"124\",\"23\",\"2\"]},{\"name\":\"ㅇ\",\"columns\":[\"2\",\"13\",\"2\"]},{\"name\":\"ㅅ\",\"columns\":[\"2\",\"1\",\"2\"]},{\"name\":\"ㅈ\",\"columns\":[\"13\",\"12\",\"13\"]},{\"name\":\"ㄴ\",\"columns\":[\"12\",\"2\"]},{\"name\":\"ㅋ\",\"columns\":[\"13\",\"1234\"]},{\"name\":\"ㅂ\",\"columns\":[\"1234\",\"24\",\"1234\"]}],\"stageWeights\":[{\"ㅏ\":1,\"ㅑ\":1,\".\":1,\"ㅍ\":1,\"ㄱ\":1,\"ㅌ\":1,\"ㅣ\":1,\"ㄷ\":1,\"ㅁ\":1,\"ㅡ\":1,\"ㅊ\":1,\"ㄹ\":1,\"ㅎ\":1,\"ㅇ\":1,\"ㅅ\":1,\"ㅈ\":1,\"ㄴ\":1,\"ㅋ\":1,\"ㅂ\":1},{\"ㅏ\":0.9183859022,\"ㅑ\":0.9583245286,\".\":0.8801117368,\"ㅍ\":1,\"ㄱ\":0.9183859022,\"ㅌ\":0.9720197058,\"ㅣ\":0.9315103263,\"ㄷ\":0.9315103263,\"ㅁ\":0.9720197058,\"ㅡ\":0.9054463933,\"ㅊ\":0.9583245286,\"ㄹ\":0.9720197058,\"ㅎ\":0.9859105972,\"ㅇ\":0.9183859022,\"ㅅ\":0.9054463933,\"ㅈ\":0.9448223084,\"ㄴ\":0.9054463933,\"ㅋ\":0.9448223084,\"ㅂ\":1},{\"ㅏ\":0.8434326653,\"ㅑ\":0.9183859022,\".\":0.7745966692,\"ㅍ\":1,\"ㄱ\":0.8434326653,\"ㅌ\":0.9448223084,\"ㅣ\":0.8677114881,\"ㄷ\":0.8677114881,\"ㅁ\":0.9448223084,\"ㅡ\":0.8198331711,\"ㅊ\":0.9183859022,\"ㄹ\":0.9448223084,\"ㅎ\":0.9720197058,\"ㅇ\":0.8434326653,\"ㅅ\":0.8198331711,\"ㅈ\":0.8926891944,\"ㄴ\":0.8198331711,\"ㅋ\":0.8926891944,\"ㅂ\":1},{\"ㅏ\":0.7745966692,\"ㅑ\":0.8801117368,\".\":0.6817316199,\"ㅍ\":1,\"ㄱ\":0.7745966692,\"ㅌ\":0.9183859022,\"ㅣ\":0.8082822114,\"ㄷ\":0.8082822114,\"ㅁ\":0.9183859022,\"ㅡ\":0.7423149879,\"ㅊ\":0.8801117368,\"ㄹ\":0.9183859022,\"ㅎ\":0.9583245286,\"ㅇ\":0.7745966692,\"ㅅ\":0.7423149879,\"ㅈ\":0.8434326653,\"ㄴ\":0.7423149879,\"ㅋ\":0.8434326653,\"ㅂ\":1},{\"ㅏ\":0.7113786609,\"ㅑ\":0.8434326653,\".\":0.6,\"ㅍ\":1,\"ㄱ\":0.7113786609,\"ㅌ\":0.8926891944,\"ㅣ\":0.7529232265,\"ㄷ\":0.7529232265,\"ㅁ\":0.8926891944,\"ㅡ\":0.6721264285,\"ㅊ\":0.8434326653,\"ㄹ\":0.8926891944,\"ㅎ\":0.9448223084,\"ㅇ\":0.7113786609,\"ㅅ\":0.6721264285,\"ㅈ\":0.7968939978,\"ㄴ\":0.6721264285,\"ㅋ\":0.7968939978,\"ㅂ\":1}]}",
+  "featureNames": [
+    "bias",
+    "occupied",
+    "rowPotential",
+    "emptyRows",
+    "horizontalRoom",
+    "verticalRoom",
+    "isolatedEmpty",
+    "dot",
+    "reroll",
+    "remainingPieces",
+    "handSize",
+    "largestPiece",
+    "placementCounter",
+    "stage",
+    "icons",
+    "nearFullRows",
+    "shortHorizontalGaps",
+    "shortVerticalGaps",
+    "adjacentRowPotential",
+    "iconRowFill",
+    "readyIconRows"
+  ],
+  "weights": [
+    6.52890763685904,
+    2.6944572113188894,
+    1.4934715439687998,
+    0.036979449920976265,
+    3.9928403528893246,
+    1.3901035436355218,
+    -1.6522726578604345,
+    0.7154241984817249,
+    1.0295914304946472,
+    0.8131014391302425,
+    -2.16436656461741,
+    -0.6934682762042875,
+    0.05322047203320736,
+    -0.17868228683153342,
+    0.5110833239585534,
+    0.019233911753753226,
+    -1.5,
+    -0.75,
+    -0.13092434167697828,
+    0.11892590271003181,
+    0.0003770577057553184
+  ],
+  "episodes": 12160,
+  "objective": "official-score",
+  "gamma": 0.985,
+  "search": {
+    "beamWidth": 12,
+    "depth": 3
+  },
+  "seed": 202610011,
+  "training": {
+    "algorithm": "episodic-cross-entropy-policy-search",
+    "objective": "log(mean/100000) + 0.15 log(P90/130000)",
+    "additionalGames": 12160,
+    "validationGames": 6700,
+    "seed": 202610011,
+    "rounds": 30,
+    "selectedRound": 21,
+    "population": 16,
+    "gamesPerCandidate": 24,
+    "validationSeed": 730031,
+    "validationCount": 100,
+    "maxSteps": 10000,
+    "search": {
+      "beamWidth": 12,
+      "depth": 3
+    },
+    "initialization": "warm-start value weights, six new spatial features initialized at zero",
+    "spatialTuning": {
+      "candidates": 8,
+      "gamesPerCandidate": 80,
+      "trainingGames": 640,
+      "trainingSeed": 111303,
+      "validationSeed": 193011,
+      "validationCount": 200,
+      "validationGames": 600,
+      "selectedIndex": 2,
+      "horizontalVerticalPenalties": [
+        1.5,
+        0.75
+      ]
+    }
+  },
+  "metrics": {
+    "evaluation": {
+      "modelFormat": "mopago-expert-policy-v5",
+      "policySha256": "42311a65194b4f1e1898177cabec2d8102a59eb79f776630c01d2e7f8c8554b1",
+      "engineSha256": "8b05df16638368b4c85ce11bece822f6c48894316e3b31af7bd4e60d0c643cf3",
+      "distribution": "mild-small-piece-decline",
+      "seeds": [
+        1141003,
+        1152009,
+        1163017
+      ],
+      "gamesPerSeed": 500,
+      "maxSteps": 10000,
+      "search": {
+        "beamWidth": 12,
+        "depth": 3
+      },
+      "p90Definition": "nearest rank: sorted[ceil(0.9*N)-1]",
+      "episodes": 1500,
+      "averageScore": 69392.45,
+      "p90Score": 127235,
+      "medianScore": 60284,
+      "minScore": 4455,
+      "maxScore": 325752,
+      "atLeast130000": 142,
+      "truncated": 0,
+      "totalSteps": 572530,
+      "totalLines": 300900,
+      "abilities": {
+        "spawnedDot": 24192,
+        "spawnedReroll": 36319,
+        "acquired": 43122,
+        "usedDot": 17168,
+        "usedReroll": 25954
+      },
+      "runs": [
+        {
+          "seed": 1141003,
+          "episodes": 500,
+          "averageScore": 66517.892,
+          "p90Score": 114382,
+          "medianScore": 57372,
+          "minScore": 4455,
+          "maxScore": 261576,
+          "atLeast130000": 39,
+          "truncated": 0,
+          "totalSteps": 183475,
+          "totalLines": 96204,
+          "abilities": {
+            "spawnedDot": 7947,
+            "spawnedReroll": 11664,
+            "acquired": 13830,
+            "usedDot": 5578,
+            "usedReroll": 8252
+          }
+        },
+        {
+          "seed": 1152009,
+          "episodes": 500,
+          "averageScore": 70085.08,
+          "p90Score": 131333,
+          "medianScore": 60767,
+          "minScore": 5153,
+          "maxScore": 325752,
+          "atLeast130000": 54,
+          "truncated": 0,
+          "totalSteps": 192840,
+          "totalLines": 101324,
+          "abilities": {
+            "spawnedDot": 8128,
+            "spawnedReroll": 12352,
+            "acquired": 14732,
+            "usedDot": 5841,
+            "usedReroll": 8891
+          }
+        },
+        {
+          "seed": 1163017,
+          "episodes": 500,
+          "averageScore": 71574.378,
+          "p90Score": 128864,
+          "medianScore": 63553.5,
+          "minScore": 4738,
+          "maxScore": 310534,
+          "atLeast130000": 49,
+          "truncated": 0,
+          "totalSteps": 196215,
+          "totalLines": 103372,
+          "abilities": {
+            "spawnedDot": 8117,
+            "spawnedReroll": 12303,
+            "acquired": 14560,
+            "usedDot": 5749,
+            "usedReroll": 8811
+          }
+        }
+      ],
+      "targets": {
+        "average": 100000,
+        "p90": 130000,
+        "averageMet": false,
+        "p90Met": false
+      }
+    }
+  }
+}

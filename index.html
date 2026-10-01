@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="한글 모아모아 알파고, 모파고. 게임판과 조각을 직접 입력하고 강화학습 모델로 다음 행동을 추천받으세요.">
+  <meta name="theme-color" content="#f6f5ed"><title>모파고 · 한글 모아모아 알파고</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./style.css">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body>
+<a href="#workspace" class="skip">게임판으로 건너뛰기</a>
+<header class="site-header"><a href="./" class="brand"><span class="brand-icon" aria-hidden="true">ㅁ</span><span>모파고<small>MOPAGO</small></span></a></header>
+<main>
+  <section id="workspace" class="workspace" aria-label="게임판과 보유 조각 입력">
+    <div class="board-panel panel">
+      <div class="panel-heading"><div><p class="eyebrow">01 / BOARD</p><h2>현재 게임판</h2></div><span class="dimension">10 × 16</span></div>
+      <div class="advance-row"><button id="next-step" class="primary" type="button" disabled>다음 단계로 진행 →</button><p class="small muted">실제 게임에서 선택한 추천대로 실행한 뒤 누르세요. 보드와 사용한 슬롯이 갱신되고 다음 수를 찾습니다.</p></div>
+      <div class="brushes" role="group" aria-label="게임판 편집 도구"><button type="button" data-brush="fill" aria-pressed="true">■ 블록</button><button type="button" data-brush="erase" aria-pressed="false">칸 비우기</button><button type="button" data-brush="dot" aria-pressed="false">◎ 점 아이콘</button><button type="button" data-brush="reroll" aria-pressed="false">↻ 교체 아이콘</button><button type="button" data-brush="remove-icon" aria-pressed="false">아이콘만 지우기</button></div>
+      <div class="board-layout"><div id="column-labels" class="column-labels" aria-hidden="true"></div><div id="row-labels" class="row-labels" aria-hidden="true"></div><div id="board" class="board" role="grid" aria-label="10열 16행 게임판"></div></div>
+      <div class="board-bottom"><span id="board-count">0 / 160칸</span><span>기준점: 왼쪽 위 (1, 1)</span></div>
+      <div class="board-legend"><span><i class="legend-filled"></i>현재 블록</span><span><i class="legend-ghost"></i>추천 배치</span><span>◎ / ↻ 능력</span></div>
+      <p id="board-preview-label" class="board-preview-label" aria-live="polite">현재 게임 상태를 직접 입력하세요.</p>
+      <p class="board-hint">클릭하거나 드래그해 입력 · 방향키로 이동, Space로 편집</p>
+      <div class="utility-row"><button id="undo" type="button" class="quiet" disabled>↶ 되돌리기</button><button id="clear-board" type="button" class="quiet">보드 비우기</button><button id="export-state" type="button" class="quiet">상태 저장</button><label class="quiet file-label">상태 불러오기<input type="file" id="import-state" accept=".json,application/json" hidden></label></div>
+    </div>
+    <aside class="input-panel">
+      <section class="panel pieces-panel"><div class="panel-heading"><div><p class="eyebrow">02 / HAND</p><h2>보유 조각</h2></div><span class="key-badge">1 · 2 · 3</span></div><p class="muted">입력칸을 누르고 <b>ㅇ</b>처럼 한 글자를 입력하세요.</p><div id="slots" class="slots"></div><div id="palette" class="palette" aria-label="블록 선택 목록"></div><p id="slot-help" class="small muted">사용한 슬롯은 ‘사용 완료’로 표시하세요. Enter로 다음 슬롯에 이동합니다.</p></section>
+      <section class="panel powers-panel"><p class="eyebrow">03 / ABILITIES</p><h2>보유 능력</h2><div class="power-inputs"><label><span>◎ 점 찍기</span><input id="dot-count" type="number" min="0" max="7" value="0" inputmode="numeric" aria-label="점 찍기 보유 횟수"></label><label><span>↻ 바꿔 뽑기</span><input id="reroll-count" type="number" min="0" max="7" value="0" inputmode="numeric" aria-label="바꿔 뽑기 보유 횟수"></label></div><p class="small muted">합계 최대 7개. 보드 아이콘은 획득 전 능력입니다.</p><div class="progress-inputs"><label>지운 줄 수<input id="line-count" type="number" min="0" max="100000" value="0" inputmode="numeric"></label><label>다음 아이콘까지<select id="placement-counter"><option value="0">7회 배치</option><option value="1">6회 배치</option><option value="2">5회 배치</option><option value="3">4회 배치</option><option value="4">3회 배치</option><option value="5">2회 배치</option><option value="6">1회 배치</option></select></label></div><span id="stage-label" class="stage-label">출현 단계 1 / 5</span></section>
+    </aside>
+  </section>
+  <section class="recommend-panel panel" aria-labelledby="recommend-title"><div class="panel-heading"><div><p class="eyebrow">NEXT MOVE</p><h2 id="recommend-title">모파고의 다음 수</h2></div><button id="recommend" class="primary" type="button">다음 수 찾기 <span aria-hidden="true">↗</span></button></div><p id="recommend-status" class="muted" role="status" aria-live="polite">세 조각을 입력하면 추천을 시작합니다.</p><div id="recommendations" class="recommendations"></div><div id="move-detail" class="move-detail" hidden></div></section>
+
+</main>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body></html>
