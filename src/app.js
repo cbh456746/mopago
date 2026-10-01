@@ -1,4 +1,4 @@
-import {WIDTH,HEIGHT,FULL,DEFAULT_SHAPES,createCatalog,initialState,validateState,stageOf,popcount,signature} from './game.js';
+import {WIDTH,HEIGHT,FULL,DEFAULT_SHAPES,createCatalog,initialState,validateState,stageOf,popcount} from './game.js';
 import {validateModel} from './expert-agent.js';
 import {migrateDefaultState,advanceRecommendation,validateStatuses} from './session.js';
 import {DEFAULT_STAGE_WEIGHTS} from './stage-distributions.js';
@@ -8,7 +8,7 @@ let shapes=structuredClone(DEFAULT_SHAPES),catalog=createCatalog(shapes),stageWe
 let model=null,modelReady=false,activeSlot=0,brush='fill',history=[],cells=[],inputs=[],previews=[],usedButtons=[];
 let result=null,selected=0,recWorker=null,recId=0,timer=null,toastTimer=null,drag=null;
 function toast(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,4500);}
-function persist(){try{localStorage.setItem(KEY,JSON.stringify({version:1,shapes,stageWeights,state,slotStatus}));}catch{toast('브라우저 저장 공간에 저장하지 못했습니다. 상태 저장 버튼으로 내려받으세요.');}}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify({version:1,shapes,stageWeights,state,slotStatus}));}catch{toast('브라우저에 자동 저장하지 못했습니다. 현재 화면에서는 계속 사용할 수 있습니다.');}}
 function remember(){history.push({state:structuredClone(state),slotStatus:[...slotStatus]});if(history.length>80)history.shift();}
 function invalidate(){$('next-step').disabled=true;recId++;result=null;selected=0;clearTimeout(timer);if(recWorker){recWorker.terminate();recWorker=null;}$('recommendations').replaceChildren();$('move-detail').hidden=true;}
 function changed(){invalidate();persist();renderBoard();renderCounters();$('undo').disabled=!history.length;timer=setTimeout(requestRecommendation,300);}
@@ -56,17 +56,21 @@ document.querySelectorAll('[data-brush]').forEach(b=>b.addEventListener('click',
 $('recommend').addEventListener('click',requestRecommendation);
 $('undo').addEventListener('click',()=>{const previous=history.pop();if(previous){state=previous.state;slotStatus=previous.slotStatus;changed();renderAll();}});
 $('clear-board').addEventListener('click',()=>edit(()=>{state.rows=Array(HEIGHT).fill(0);state.icons=[];}));
+$('reset-game').addEventListener('click',()=>{
+  invalidate();
+  state=initialState();slotStatus=['pending','pending','pending'];
+  history=[];activeSlot=0;brush='fill';drag=null;
+  document.querySelectorAll('[data-brush]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brush===brush)));
+  cells.forEach((cell,i)=>cell.tabIndex=i===0?0:-1);
+  persist();renderAll();activate(0);requestRecommendation();
+  toast('보드·조각·능력·진행 기록을 모두 초기화했습니다.');
+});
 for(const kind of ['dot','reroll'])$(kind+'-count').addEventListener('change',event=>edit(()=>state.powers[kind]=Number(event.target.value)));
 function updateLineCount(event){if(event.target.value==='')return;const lines=Number(event.target.value);if(lines===state.lines)return;edit(()=>state.lines=lines);}
 $('line-count').addEventListener('input',updateLineCount);
 $('line-count').addEventListener('change',updateLineCount);
 $('placement-counter').addEventListener('change',event=>edit(()=>state.placementCounter=Number(event.target.value)));
 document.addEventListener('keydown',event=>{if(event.isComposing||event.ctrlKey||event.metaKey||event.altKey||/INPUT|TEXTAREA|SELECT/.test(event.target.tagName))return;if(['1','2','3'].includes(event.key)){event.preventDefault();activate(Number(event.key)-1);}});
-function download(name,value){const url=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));const a=make('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-async function readJSON(file){if(!file||file.size>2*1024*1024)throw Error('2MB 이하 JSON 파일을 선택하세요.');return JSON.parse(await file.text());}
-$('export-state').addEventListener('click',()=>download('mopago-board.json',{version:1,shapes,stageWeights,state,slotStatus}));
-$('import-state').addEventListener('change',async event=>{try{const data=migrateDefaultState(await readJSON(event.target.files[0]));if(data.version!==1||signature(createCatalog(data.shapes),data.stageWeights)!==signature(catalog,stageWeights))throw Error('저장된 블록·확률 정의가 현재 설정과 다릅니다. 지원하는 19종 조각의 상태 파일을 선택하세요.');validateState(data.state,catalog);validateStatuses(data.slotStatus,data.state);edit(()=>{state=data.state;slotStatus=data.slotStatus;});renderAll();toast('게임 상태를 불러왔습니다.');}catch(error){toast(error.message);}event.target.value='';});
-
 function restoreState(){
   try{
     const stored=JSON.parse(localStorage.getItem(KEY));if(!stored)return;

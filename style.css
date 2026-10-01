@@ -46,7 +46,6 @@ main{max-width:1160px;padding:0 2rem;margin:auto}
 .utility-row{display:flex;gap:.55rem;flex-wrap:wrap;align-items:center}
 .quiet{border:1px solid var(--line);background:transparent;padding:.4rem .6rem;font-size:.73rem;text-decoration:none}
 .quiet:hover{background:var(--lime)}
-.file-label{border-radius:8px;cursor:pointer}
 .input-panel{display:grid;gap:1.2rem}
 .pieces-panel>.muted{font-size:.81rem}
 .slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin-bottom:1.1rem}

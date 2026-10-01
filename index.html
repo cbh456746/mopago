@@ -21,7 +21,7 @@
       <div class="board-legend"><span><i class="legend-filled"></i>현재 블록</span><span><i class="legend-ghost"></i>추천 배치</span><span>◎ / ↻ 능력</span></div>
       <p id="board-preview-label" class="board-preview-label" aria-live="polite">현재 게임 상태를 직접 입력하세요.</p>
       <p class="board-hint">클릭하거나 드래그해 입력 · 방향키로 이동, Space로 편집</p>
-      <div class="utility-row"><button id="undo" type="button" class="quiet" disabled>↶ 되돌리기</button><button id="clear-board" type="button" class="quiet">보드 비우기</button><button id="export-state" type="button" class="quiet">상태 저장</button><label class="quiet file-label">상태 불러오기<input type="file" id="import-state" accept=".json,application/json" hidden></label></div>
+      <div class="utility-row"><button id="undo" type="button" class="quiet" disabled>↶ 되돌리기</button><button id="clear-board" type="button" class="quiet">보드 비우기</button><button id="reset-game" type="button" class="quiet" title="보드·조각·지운 줄 수·보유 능력 등 모든 게임 상태를 초기화합니다">초기화</button></div>
     </div>
     <aside class="input-panel">
       <section class="panel pieces-panel"><div class="panel-heading"><div><p class="eyebrow">02 / HAND</p><h2>보유 조각</h2></div><span class="key-badge">1 · 2 · 3</span></div><p class="muted">입력칸을 누르고 <b>ㅇ</b>처럼 한 글자를 입력하세요.</p><div id="slots" class="slots"></div><div id="palette" class="palette" aria-label="블록 선택 목록"></div><p id="slot-help" class="small muted">사용한 슬롯은 ‘사용 완료’로 표시하세요. Enter로 다음 슬롯에 이동합니다.</p></section>
